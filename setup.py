@@ -27,10 +27,42 @@ class Install:
             return False
     
     def yay(self):
-        pass
+        os.system("git clone https://aur.archlinux.org/yay.git")
+        os.chdir(os.path.join(os.getcwd(), "yay"))
+        os.system("makepkg -si")
+        os.chdir("..")
+        os.remove(os.path.join(os.getcwd(), "yay"))
+    
+    def visual_studio_code(self):
+        os.system("yay -S visual-studio-code-bin")
+    
+    def vscodium(self):
+        os.system("yay -S vscodium-bin")
+    
+    def brave_browser(self):
+        os.system("yay -S brave-bin")
+    
+    def github_desktop(self):
+        os.system("yay -S github-desktop-bin")
+    
+    def mongodb_compass(self):
+        os.system("yay -S mongodb-compass")
+    
+    def discord(self):
+        os.system("yay -S discord")
+    
+    def fish(self):
+        os.system("yay -S fish")
+        
+    def zsh(self):
+        os.system("yay -S zsh")
+    
+    def bitwarden(self):
+        os.system("yay -S bitwarden")
     
 
 x = Install()
-y = x._change_dir()
+x._change_dir()
+x.bitwarden()
 
-print(os.getcwd(), y)
+print(os.getcwd())
