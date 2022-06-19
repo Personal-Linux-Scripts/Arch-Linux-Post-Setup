@@ -55,7 +55,15 @@ class Install:
             "pinta",
             "photopea"
         ]   
-    
+        self.__python_list = [
+            "opencv-python",
+            "requests",
+            "flask",
+            "discord",
+            "uvicorn",
+            "django",
+            "pyinstaller"
+        ]
     
     def _change_dir(self, path: Types.FdOrAnyPath = None):
         if path is None:
@@ -79,15 +87,22 @@ class Install:
         os.chdir("..")
         os.remove(os.path.join(os.getcwd(), "yay"))
     
-    def packages(self):
+    def main_packages(self):
         self._install_yay()
         os.system(
             "yay -Syy  {packages}".format(
                 packages=" ".join(self.__install_list)
             )
         )
+    
+    def python_packages(self):
+        os.system(
+            "python -m pip install -U {packages}".format(
+                packages=" ".join(self.__install_list)
+            )
+        )
+        
 
-
-x = Install()
-
-print(os.getcwd())
+if __name__ == "__main__":
+    ins = Install()
+    ins.main_packages()
