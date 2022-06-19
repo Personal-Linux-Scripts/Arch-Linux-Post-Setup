@@ -1,12 +1,12 @@
-# Arch-Linux-Post-Setup
+# Guide
 
 ### 1. Install Dependencies
 
 ```bash
-sudo pacman -Syyu --needed base-devel python python-pip gnome-disks wget --noconfirm
+sudo pacman -Syyu --needed base-devel python python-pip gnome-disk-utility wget --noconfirm
 ```
 
-### 2. Setup `gnome-disks` to automount drives on startup with default settings
+### 2. Setup `gnome-disk-utility` to automount drives on startup with default settings
 
 ### 3. Run script
 
