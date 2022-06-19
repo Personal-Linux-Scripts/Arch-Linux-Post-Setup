@@ -1,3 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# This script is made for my personal computer based on my personal needs
+# This script might not suite you out of the box
+# but, you can customize the script easily
+# Made by Hirusha Adikari ~ @hirusha-adi 
+
 import os
 from os import PathLike
 from typing import Union, TypeAlias
@@ -11,6 +19,7 @@ class Install:
     def __init__(self) -> None:
         self.__HOME_FOLDER = os.path.join('/home', str(getuser()))
         self.__WORK_FOLDER = os.path.join(self.__HOME_FOLDER, 'setup')
+        
         self.__install_list = [
             "brave-bin", 
             "spotify",
@@ -53,6 +62,7 @@ class Install:
             "sonixd-appimage",
             "flatpak",
             "pinta",
+            "docker",
             "photopea"
         ]   
         self.__python_list = [
@@ -98,11 +108,26 @@ class Install:
     def python_packages(self):
         os.system(
             "python -m pip install -U {packages}".format(
-                packages=" ".join(self.__install_list)
+                packages=" ".join(self.__python_list)
             )
         )
+    
+    def docker_apps(self):
         
+        # Install Portainer
+        os.system("sudo docker volume create portainer_data")
+        os.system("sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.9.3")
 
+        # Deemix
+        os.chdir("/mnt/5D9037A9106244F3/DeemixData/docker/")
+        os.system("sudo docker-compose up -d")
+        
+        # Navidrome
+        os.chdir("/mnt/5D9037A9106244F3/NavidromeData/docker/")
+        os.system("sudo docker-compose up -d")
+        
 if __name__ == "__main__":
     ins = Install()
     ins.main_packages()
+    ins.python_packages()
+    ins.docker_apps()
