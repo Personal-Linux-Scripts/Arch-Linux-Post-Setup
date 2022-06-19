@@ -63,6 +63,13 @@ class Install:
             "flatpak",
             "pinta",
             "docker",
+            "docker-compose",
+            "wget",
+            "curl",
+            "neofetch",
+            "nano",
+            "htop",
+            "bpytop",
             "photopea"
         ]   
         self.__python_list = [
